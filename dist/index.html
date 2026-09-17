@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="InsideStory MixPalette — osobisty mieszalnik farb modelarskich." />
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="./icon.svg" />
+  <link rel="icon" href="./icon-v2.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icon-v2.svg" />
   <link rel="stylesheet" href="./styles.css" />
   <title>InsideStory — MixPalette</title>
 </head>
@@ -15,7 +15,7 @@
   <div class="app-shell">
     <header class="topbar">
       <div class="brand-mark" aria-hidden="true"><span></span></div>
-      <div><p class="eyebrow">MIXPALETTE</p><h1>InsideStory</h1></div>
+      <div><p class="eyebrow">INSIDESTORY</p><h1>MixPalette</h1></div>
       <button class="line-button install-button hidden" id="installButton" type="button">Zainstaluj</button>
     </header>
 
@@ -26,10 +26,7 @@
           <button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button>
         </div>
 
-        <div class="palette-picker" role="radiogroup" aria-label="Rodzaj farby">
-          <button class="palette-option active" type="button" role="radio" aria-checked="true" data-palette="Vallejo Model Air"><strong>Model Air</strong><span>Do aerografu</span></button>
-          <button class="palette-option" type="button" role="radio" aria-checked="false" data-palette="Vallejo Model Color"><strong>Model Color</strong><span>Do pędzla</span></button>
-        </div>
+        <div class="palette-picker" id="palettePicker" role="radiogroup" aria-label="Palety używane do mieszania"></div>
 
         <div class="wheel-card">
           <div class="color-wheel-wrap">
@@ -59,7 +56,7 @@
       <section class="view" id="paintsView" aria-labelledby="paintsTitle">
         <div class="section-heading">
           <div><p class="eyebrow">TWOJA KOLEKCJA</p><h2 id="paintsTitle">Moje farby</h2></div>
-          <button class="round-line-button" id="addPaint" aria-label="Dodaj farbę">＋</button>
+          <div class="heading-actions"><button class="small-line-button" id="addPalette" type="button">＋ Paleta</button><button class="round-line-button" id="addPaint" type="button" aria-label="Dodaj farbę">＋</button></div>
         </div>
         <div class="collection-stats"><strong id="paintCount">0</strong><span>kolorów gotowych do mieszania</span></div>
         <div class="paint-list" id="paintList"></div>
@@ -83,8 +80,8 @@
 
   <dialog id="paintDialog">
     <form method="dialog" id="paintForm">
-      <div class="dialog-head"><div><p class="eyebrow">NOWA FARBA</p><h2>Dodaj do kolekcji</h2></div><button value="cancel" class="close-button" aria-label="Zamknij">×</button></div>
-      <label>Rodzaj farby<select id="paintRange"><option>Vallejo Model Air</option><option>Vallejo Model Color</option><option>Inna paleta</option></select></label>
+      <div class="dialog-head"><div><p class="eyebrow">NOWA FARBA</p><h2>Dodaj do kolekcji</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label>Paleta<select id="paintRange"></select></label>
       <label>Kod koloru<input id="paintCode" placeholder="np. 71.004" autocomplete="off" required></label>
       <div class="suggestion hidden" id="paintSuggestion"></div>
       <label>Nazwa<input id="paintName" placeholder="np. Blue" required></label>
@@ -95,7 +92,7 @@
 
   <dialog id="recipeDialog">
     <form method="dialog" id="recipeForm">
-      <div class="dialog-head"><div><p class="eyebrow">ZAPISZ</p><h2>Nowa receptura</h2></div><button value="cancel" class="close-button" aria-label="Zamknij">×</button></div>
+      <div class="dialog-head"><div><p class="eyebrow">ZAPISZ</p><h2>Nowa receptura</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
       <label>Nazwa mieszanki<input id="recipeName" placeholder="np. Fiolet płaszcza" required></label>
       <div class="recipe-preview" id="recipePreview"></div>
       <button class="primary-button full" value="default" type="submit">Zapisz w bibliotece</button>
@@ -104,7 +101,7 @@
 
   <dialog id="adjustDialog">
     <form method="dialog" id="adjustForm">
-      <div class="dialog-head"><div><p class="eyebrow">KOREKTA</p><h2>Dopasuj proporcje</h2></div><button value="cancel" class="close-button" aria-label="Zamknij">×</button></div>
+      <div class="dialog-head"><div><p class="eyebrow">KOREKTA</p><h2>Dopasuj proporcje</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
       <div id="adjustRows"></div>
       <p class="mix-note">Po zmianie zapisz recepturę. Twoja korekta zostanie zachowana w bibliotece.</p>
       <button class="primary-button full" value="default" type="submit">Zastosuj korektę</button>
@@ -113,9 +110,18 @@
 
   <dialog id="hexDialog">
     <form method="dialog" id="hexForm">
-      <div class="dialog-head"><div><p class="eyebrow">CEL</p><h2>Wpisz kolor HEX</h2></div><button value="cancel" class="close-button" aria-label="Zamknij">×</button></div>
+      <div class="dialog-head"><div><p class="eyebrow">CEL</p><h2>Wpisz kolor HEX</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
       <label>Kod koloru<input id="hexInput" value="#7456D9" maxlength="7" required></label>
       <button class="primary-button full" value="default" type="submit">Ustaw kolor</button>
+    </form>
+  </dialog>
+
+  <dialog id="paletteDialog">
+    <form method="dialog" id="paletteForm">
+      <div class="dialog-head"><div><p class="eyebrow">NOWA PALETA</p><h2>Dodaj producenta lub serię</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label>Nazwa palety<input id="paletteName" placeholder="np. Army Painter Fanatic" required></label>
+      <label>Zastosowanie<input id="paletteUse" placeholder="np. do pędzla"></label>
+      <button class="primary-button full" value="default" type="submit">Dodaj paletę</button>
     </form>
   </dialog>
 
