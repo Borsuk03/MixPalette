@@ -26,7 +26,7 @@
           <button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button>
         </div>
 
-        <div class="palette-picker" id="palettePicker" role="radiogroup" aria-label="Palety używane do mieszania"></div>
+        <label class="mixer-palette-select">Paleta do mieszania<select id="mixerPaletteSelect" aria-label="Wybierz paletę do mieszania"></select></label>
 
         <div class="wheel-card">
           <div class="color-wheel-wrap">
@@ -56,7 +56,7 @@
       <section class="view" id="paintsView" aria-labelledby="paintsTitle">
         <div class="section-heading">
           <div><p class="eyebrow">TWOJA KOLEKCJA</p><h2 id="paintsTitle">Moje farby</h2></div>
-          <div class="heading-actions"><button class="small-line-button" id="addPalette" type="button">＋ Paleta</button><button class="round-line-button" id="addPaint" type="button" aria-label="Dodaj farbę">＋</button></div>
+          <div class="heading-actions"><button class="small-line-button" id="addPalette" type="button">＋ Grupa</button><button class="round-line-button" id="addPaint" type="button" aria-label="Dodaj kolor">＋</button></div>
         </div>
         <div class="collection-stats"><strong id="paintCount">0</strong><span>kolorów gotowych do mieszania</span></div>
         <div class="paint-list" id="paintList"></div>
@@ -118,10 +118,10 @@
 
   <dialog id="paletteDialog">
     <form method="dialog" id="paletteForm">
-      <div class="dialog-head"><div><p class="eyebrow">NOWA PALETA</p><h2>Dodaj producenta lub serię</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
-      <label>Nazwa palety<input id="paletteName" placeholder="np. Army Painter Fanatic" required></label>
+      <div class="dialog-head"><div><p class="eyebrow">NOWA GRUPA</p><h2>Dodaj grupę palety</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label>Nazwa grupy<input id="paletteName" placeholder="np. Army Painter Fanatic" required></label>
       <label>Zastosowanie<input id="paletteUse" placeholder="np. do pędzla"></label>
-      <button class="primary-button full" value="default" type="submit">Dodaj paletę</button>
+      <button class="primary-button full" value="default" type="submit">Dodaj grupę</button>
     </form>
   </dialog>
 
