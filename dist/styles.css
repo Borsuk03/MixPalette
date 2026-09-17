@@ -24,3 +24,6 @@ dialog{width:min(calc(100% - 28px),470px);border:0;border-radius:26px;padding:0;
 .mix-segment{min-width:12px;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:850;text-shadow:0 1px 3px rgba(0,0,0,.45);transition:flex .25s ease}
 .mix-legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:9px}.mix-legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);font-weight:700}.mix-legend-dot{width:8px;height:8px;border-radius:50%}
 .github-link{display:block;text-align:center;margin:26px 0 2px;color:var(--muted);font-size:11px;font-weight:700;text-decoration:none}.github-link:hover{color:var(--ink)}
+.palette-picker{display:flex;overflow-x:auto;scrollbar-width:none}.palette-picker::-webkit-scrollbar{display:none}.palette-option{flex:0 0 142px}
+.target-swatch{pointer-events:none}.color-wheel-wrap{touch-action:none!important}.color-wheel-wrap canvas{pointer-events:none}
+.heading-actions{display:flex;align-items:center;gap:8px}.small-line-button{height:38px;padding:0 12px;border:1.5px solid var(--ink);border-radius:99px;background:#fff;font-size:11px;font-weight:800}
