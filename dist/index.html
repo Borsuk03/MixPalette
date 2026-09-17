@@ -8,7 +8,7 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-v2.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon-v2.svg" />
-  <link rel="stylesheet" href="./styles.css?v=10" />
+  <link rel="stylesheet" href="./styles.css?v=11" />
   <title>InsideStory — MixPalette</title>
 </head>
 <body>
@@ -16,17 +16,17 @@
     <header class="topbar">
       <div class="brand-mark" aria-hidden="true"><span></span></div>
       <div><p class="eyebrow">INSIDESTORY</p><h1>MixPalette</h1></div>
-      <button class="line-button install-button hidden" id="installButton" type="button">Zainstaluj</button>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
     </header>
 
     <main>
       <section class="view active" id="mixerView" aria-labelledby="mixerTitle">
         <div class="section-heading">
-          <div><p class="eyebrow">NOWA MIESZANKA</p><h2 id="mixerTitle">Wybierz kolor</h2></div>
+          <div><p class="eyebrow" data-pl="NOWA MIESZANKA" data-en="NEW MIX">NOWA MIESZANKA</p><h2 id="mixerTitle" data-pl="Wybierz kolor" data-en="Choose a color">Wybierz kolor</h2></div>
           <button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button>
         </div>
 
-        <label class="mixer-palette-select">Paleta do mieszania<select id="mixerPaletteSelect" aria-label="Wybierz paletę do mieszania"></select></label>
+        <label class="mixer-palette-select"><span data-pl="Paleta do mieszania" data-en="Mixing palette">Paleta do mieszania</span><select id="mixerPaletteSelect" aria-label="Wybierz paletę do mieszania"></select></label>
 
         <div class="wheel-card">
           <div class="color-wheel-wrap">
@@ -40,91 +40,100 @@
         </div>
 
         <div class="mix-head">
-          <div><p class="eyebrow">RECEPTURA</p><h2>Najbliższa mieszanka</h2></div>
+          <div><p class="eyebrow" data-pl="RECEPTURA" data-en="RECIPE">RECEPTURA</p><h2 data-pl="Najbliższa mieszanka" data-en="Closest mix">Najbliższa mieszanka</h2></div>
           <span class="accuracy" id="accuracy">94% zgodności</span>
         </div>
         <div class="active-palette-label" id="activePaletteLabel">Vallejo Model Air · do aerografu</div>
         <div class="mix-infographic" id="mixInfographic" aria-label="Proporcje mieszanki"></div>
         <div id="mixResult" class="mix-result"></div>
         <section class="purchase-advice" id="purchaseAdvice" aria-live="polite"></section>
-        <p class="mix-note">To przybliżenie. Pigment, krycie i wyschnięcie farby mogą zmienić rezultat.</p>
+        <p class="mix-note" data-pl="To przybliżenie. Pigment, krycie i wyschnięcie farby mogą zmienić rezultat." data-en="This is an estimate. Pigment, opacity and drying may change the result.">To przybliżenie. Pigment, krycie i wyschnięcie farby mogą zmienić rezultat.</p>
         <div class="primary-actions">
-          <button class="primary-button" id="saveRecipe" type="button"><span class="plus">＋</span>Zapisz recepturę</button>
-          <button class="secondary-button" id="adjustMix" type="button">Dopasuj ręcznie</button>
+          <button class="primary-button" id="saveRecipe" type="button"><span class="plus">＋</span><span data-pl="Zapisz recepturę" data-en="Save recipe">Zapisz recepturę</span></button>
+          <button class="secondary-button" id="adjustMix" type="button" data-pl="Dopasuj ręcznie" data-en="Adjust manually">Dopasuj ręcznie</button>
         </div>
       </section>
 
       <section class="view" id="paintsView" aria-labelledby="paintsTitle">
         <div class="section-heading">
-          <div><p class="eyebrow">TWOJA KOLEKCJA</p><h2 id="paintsTitle">Moje farby</h2></div>
-          <div class="heading-actions"><button class="small-line-button" id="addPalette" type="button">＋ Grupa</button><button class="round-line-button" id="addPaint" type="button" aria-label="Dodaj kolor">＋</button></div>
+          <div><p class="eyebrow" data-pl="TWOJA KOLEKCJA" data-en="YOUR COLLECTION">TWOJA KOLEKCJA</p><h2 id="paintsTitle" data-pl="Moje farby" data-en="My paints">Moje farby</h2></div>
+          <div class="heading-actions"><button class="small-line-button" id="addPalette" type="button"><span data-pl="＋ Grupa" data-en="＋ Group">＋ Grupa</span></button><button class="round-line-button" id="addPaint" type="button" aria-label="Dodaj kolor">＋</button></div>
         </div>
-        <div class="collection-stats"><strong id="paintCount">0</strong><span>kolorów gotowych do mieszania</span></div>
+        <div class="collection-stats"><strong id="paintCount">0</strong><span data-pl="kolorów gotowych do mieszania" data-en="colors ready to mix">kolorów gotowych do mieszania</span></div>
         <div class="paint-list" id="paintList"></div>
       </section>
 
       <section class="view" id="recipesView" aria-labelledby="recipesTitle">
         <div class="section-heading">
-          <div><p class="eyebrow">BIBLIOTEKA</p><h2 id="recipesTitle">Receptury</h2></div>
+          <div><p class="eyebrow" data-pl="BIBLIOTEKA" data-en="LIBRARY">BIBLIOTEKA</p><h2 id="recipesTitle" data-pl="Receptury" data-en="Recipes">Receptury</h2></div>
         </div>
         <div class="recipe-list" id="recipeList"></div>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Główna nawigacja">
-      <button class="nav-item active" data-view="mixerView"><span class="nav-icon mix-icon"></span><span>Mieszaj</span></button>
-      <button class="nav-item" data-view="paintsView"><span class="nav-icon bottle-icon"></span><span>Farby</span></button>
-      <button class="nav-item" data-view="recipesView"><span class="nav-icon book-icon"></span><span>Receptury</span></button>
+      <button class="nav-item active" data-view="mixerView"><span class="nav-icon mix-icon"></span><span data-pl="Mieszaj" data-en="Mix">Mieszaj</span></button>
+      <button class="nav-item" data-view="paintsView"><span class="nav-icon bottle-icon"></span><span data-pl="Farby" data-en="Paints">Farby</span></button>
+      <button class="nav-item" data-view="recipesView"><span class="nav-icon book-icon"></span><span data-pl="Receptury" data-en="Recipes">Receptury</span></button>
     </nav>
-    <a class="github-link" href="https://github.com/Borsuk03/MixPalette" target="_blank" rel="noopener">Kod aplikacji na GitHubie ↗</a>
   </div>
+
+  <dialog id="menuDialog" class="menu-dialog">
+    <div class="menu-panel">
+      <div class="dialog-head"><div><p class="eyebrow">MIXPALETTE</p><h2 data-pl="Menu" data-en="Menu">Menu</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <p class="menu-label" data-pl="Język" data-en="Language">Język</p>
+      <div class="language-switch"><button type="button" data-language="pl">Polski</button><button type="button" data-language="en">English</button></div>
+      <button class="menu-action hidden" id="installButton" type="button" data-pl="Zainstaluj aplikację" data-en="Install app">Zainstaluj aplikację</button>
+      <a class="menu-action" href="https://github.com/Borsuk03/MixPalette" target="_blank" rel="noopener" data-pl="Kod aplikacji na GitHubie ↗" data-en="Application code on GitHub ↗">Kod aplikacji na GitHubie ↗</a>
+    </div>
+  </dialog>
 
   <dialog id="paintDialog">
     <form method="dialog" id="paintForm">
-      <div class="dialog-head"><div><p class="eyebrow">NOWA FARBA</p><h2>Dodaj do kolekcji</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
-      <label>Producent<select id="paintManufacturer"><option value="Vallejo">Vallejo</option></select></label>
-      <label>Kod koloru<input id="paintCode" placeholder="np. 71.004" autocomplete="off" required></label>
+      <div class="dialog-head"><div><p class="eyebrow" data-pl="NOWA FARBA" data-en="NEW PAINT">NOWA FARBA</p><h2 data-pl="Dodaj do kolekcji" data-en="Add to collection">Dodaj do kolekcji</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label><span data-pl="Producent" data-en="Manufacturer">Producent</span><select id="paintManufacturer"><option value="Vallejo">Vallejo</option></select></label>
+      <label><span data-pl="Kod koloru" data-en="Color code">Kod koloru</span><input id="paintCode" placeholder="np. 71.004" autocomplete="off" required></label>
       <div class="paint-recognition hidden" id="paintSuggestion"></div>
-      <button class="primary-button full" id="paintSubmit" value="default" type="submit" disabled>Dodaj farbę</button>
+      <button class="primary-button full" id="paintSubmit" value="default" type="submit" disabled data-pl="Dodaj farbę" data-en="Add paint">Dodaj farbę</button>
     </form>
   </dialog>
 
   <dialog id="recipeDialog">
     <form method="dialog" id="recipeForm">
-      <div class="dialog-head"><div><p class="eyebrow">ZAPISZ</p><h2>Nowa receptura</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
-      <label>Nazwa mieszanki<input id="recipeName" placeholder="np. Fiolet płaszcza" required></label>
+      <div class="dialog-head"><div><p class="eyebrow" data-pl="ZAPISZ" data-en="SAVE">ZAPISZ</p><h2 data-pl="Nowa receptura" data-en="New recipe">Nowa receptura</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label><span data-pl="Nazwa mieszanki" data-en="Mix name">Nazwa mieszanki</span><input id="recipeName" data-placeholder-pl="np. Fiolet płaszcza" data-placeholder-en="e.g. Cloak purple" placeholder="np. Fiolet płaszcza" required></label>
       <div class="recipe-preview" id="recipePreview"></div>
-      <button class="primary-button full" value="default" type="submit">Zapisz w bibliotece</button>
+      <button class="primary-button full" value="default" type="submit" data-pl="Zapisz w bibliotece" data-en="Save to library">Zapisz w bibliotece</button>
     </form>
   </dialog>
 
   <dialog id="adjustDialog">
     <form method="dialog" id="adjustForm">
-      <div class="dialog-head"><div><p class="eyebrow">KOREKTA</p><h2>Dopasuj proporcje</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <div class="dialog-head"><div><p class="eyebrow" data-pl="KOREKTA" data-en="ADJUST">KOREKTA</p><h2 data-pl="Dopasuj krople" data-en="Adjust drops">Dopasuj krople</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
       <div id="adjustRows"></div>
       <p class="mix-note">Po zmianie zapisz recepturę. Twoja korekta zostanie zachowana w bibliotece.</p>
-      <button class="primary-button full" value="default" type="submit">Zastosuj korektę</button>
+      <button class="primary-button full" value="default" type="submit" data-pl="Zastosuj korektę" data-en="Apply changes">Zastosuj korektę</button>
     </form>
   </dialog>
 
   <dialog id="hexDialog">
     <form method="dialog" id="hexForm">
-      <div class="dialog-head"><div><p class="eyebrow">CEL</p><h2>Wpisz kolor HEX</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <div class="dialog-head"><div><p class="eyebrow" data-pl="CEL" data-en="TARGET">CEL</p><h2 data-pl="Wpisz kolor HEX" data-en="Enter HEX color">Wpisz kolor HEX</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
       <label>Kod koloru<input id="hexInput" value="#7456D9" maxlength="7" required></label>
-      <button class="primary-button full" value="default" type="submit">Ustaw kolor</button>
+      <button class="primary-button full" value="default" type="submit" data-pl="Ustaw kolor" data-en="Set color">Ustaw kolor</button>
     </form>
   </dialog>
 
   <dialog id="paletteDialog">
     <form method="dialog" id="paletteForm">
-      <div class="dialog-head"><div><p class="eyebrow">NOWA GRUPA</p><h2>Dodaj grupę palety</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
-      <label>Nazwa grupy<input id="paletteName" placeholder="np. Army Painter Fanatic" required></label>
-      <label>Zastosowanie<input id="paletteUse" placeholder="np. do pędzla"></label>
-      <button class="primary-button full" value="default" type="submit">Dodaj grupę</button>
+      <div class="dialog-head"><div><p class="eyebrow" data-pl="NOWA GRUPA" data-en="NEW GROUP">NOWA GRUPA</p><h2 data-pl="Dodaj grupę palety" data-en="Add palette group">Dodaj grupę palety</h2></div><button type="button" class="close-button" aria-label="Zamknij">×</button></div>
+      <label><span data-pl="Nazwa grupy" data-en="Group name">Nazwa grupy</span><input id="paletteName" placeholder="np. Army Painter Fanatic" required></label>
+      <label><span data-pl="Zastosowanie" data-en="Use">Zastosowanie</span><input id="paletteUse" data-placeholder-pl="np. do pędzla" data-placeholder-en="e.g. brush painting" placeholder="np. do pędzla"></label>
+      <button class="primary-button full" value="default" type="submit" data-pl="Dodaj grupę" data-en="Add group">Dodaj grupę</button>
     </form>
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=10"></script>
+  <script src="./app.js?v=11"></script>
 </body>
 </html>
