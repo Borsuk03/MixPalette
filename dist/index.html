@@ -8,7 +8,7 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon-v2.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon-v2.svg" />
-  <link rel="stylesheet" href="./styles.css?v=12" />
+  <link rel="stylesheet" href="./styles.css?v=13" />
   <title>InsideStory — MixPalette</title>
 </head>
 <body>
@@ -24,10 +24,8 @@
       <section class="view active" id="mixerView" aria-labelledby="mixerTitle">
         <div class="section-heading">
           <div><p class="eyebrow" data-pl="NOWA MIESZANKA" data-en="NEW MIX">NOWA MIESZANKA</p><h2 id="mixerTitle" data-pl="Wybierz kolor" data-en="Choose a color">Wybierz kolor</h2></div>
-          <button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button>
+          <div class="mixer-heading-tools"><select id="mixerPaletteSelect" aria-label="Wybierz paletę do mieszania"></select><button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button></div>
         </div>
-
-        <label class="mixer-palette-select"><span data-pl="Paleta do mieszania" data-en="Mixing palette">Paleta do mieszania</span><select id="mixerPaletteSelect" aria-label="Wybierz paletę do mieszania"></select></label>
 
         <div class="wheel-card">
           <div class="color-wheel-wrap">
@@ -71,6 +69,9 @@
         <div class="recipe-list" id="recipeList"></div>
       </section>
     </main>
+
+    <button class="edge-nav edge-nav-left" id="previousView" type="button"><span class="nav-icon book-icon" aria-hidden="true"></span><span class="edge-label">Receptury</span></button>
+    <button class="edge-nav edge-nav-right" id="nextView" type="button"><span class="nav-icon bottle-icon" aria-hidden="true"></span><span class="edge-label">Farby</span></button>
 
   </div>
 
@@ -136,6 +137,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=12"></script>
+  <script src="./app.js?v=13"></script>
 </body>
 </html>
