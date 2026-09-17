@@ -2,6 +2,8 @@
 
 Mobilna aplikacja PWA do wyliczania przybliżonych mieszanek farb Vallejo i innych palet.
 
+**[Otwórz aplikację InsideStory MixPalette](https://borsuk03.github.io/MixPalette/)**
+
 ## Funkcje
 
 - wybór koloru na interaktywnym kole lub przez kod HEX,
