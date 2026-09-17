@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Osobisty mieszalnik farb modelarskich." />
+  <meta name="description" content="InsideStory MixPalette — osobisty mieszalnik farb modelarskich." />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon.svg" />
   <link rel="stylesheet" href="./styles.css" />
-  <title>MixPalette</title>
+  <title>InsideStory — MixPalette</title>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div><p class="eyebrow">PAINT STUDIO</p><h1>MixPalette</h1></div>
+      <div class="brand-mark" aria-hidden="true"><span></span></div>
+      <div><p class="eyebrow">MIXPALETTE</p><h1>InsideStory</h1></div>
       <button class="line-button install-button hidden" id="installButton" type="button">Zainstaluj</button>
     </header>
 
@@ -24,6 +24,11 @@
         <div class="section-heading">
           <div><p class="eyebrow">NOWA MIESZANKA</p><h2 id="mixerTitle">Wybierz kolor</h2></div>
           <button class="round-line-button" id="openHex" aria-label="Wpisz kod HEX">#</button>
+        </div>
+
+        <div class="palette-picker" role="radiogroup" aria-label="Rodzaj farby">
+          <button class="palette-option active" type="button" role="radio" aria-checked="true" data-palette="Vallejo Model Air"><strong>Model Air</strong><span>Do aerografu</span></button>
+          <button class="palette-option" type="button" role="radio" aria-checked="false" data-palette="Vallejo Model Color"><strong>Model Color</strong><span>Do pędzla</span></button>
         </div>
 
         <div class="wheel-card">
@@ -41,6 +46,7 @@
           <div><p class="eyebrow">RECEPTURA</p><h2>Najbliższa mieszanka</h2></div>
           <span class="accuracy" id="accuracy">94% zgodności</span>
         </div>
+        <div class="active-palette-label" id="activePaletteLabel">Vallejo Model Air · do aerografu</div>
         <div id="mixResult" class="mix-result"></div>
         <p class="mix-note">To przybliżenie. Pigment, krycie i wyschnięcie farby mogą zmienić rezultat.</p>
         <div class="primary-actions">
